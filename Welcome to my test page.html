@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Juan — Test Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #fef9c3;
+      --accent: #ff6b9d;
+      --black: #111111;
+      --white: #ffffff;
+      --shadow: 8px 8px 0 var(--black);
+      --border: 3px solid var(--black);
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background-color: var(--bg);
+      background-image: radial-gradient(circle, var(--black) 1px, transparent 1px);
+      background-size: 22px 22px;
+      color: var(--black);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      transition: background-color 0.3s ease;
+      overflow-x: hidden;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 900px;
+      text-align: center;
+    }
+
+    /* TAG */
+    .tag {
+      display: inline-block;
+      background: #8ce99a;
+      border: var(--border);
+      padding: 8px 20px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      box-shadow: 5px 5px 0 var(--black);
+      margin-bottom: 40px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: default;
+    }
+
+    .tag:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 7px 7px 0 var(--black);
+    }
+
+    /* TITLE */
+    .title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(2.5rem, 10vw, 7rem);
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: -3px;
+      margin-bottom: 50px;
+      word-break: break-word;
+    }
+
+    .title .name {
+      display: inline-block;
+      background: var(--accent);
+      padding: 0 18px;
+      border: var(--border);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+      transform-origin: center;
+    }
+
+    .title .name:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: 11px 11px 0 var(--black);
+    }
+
+    .title .name:active {
+      transform: translate(4px, 4px);
+      box-shadow: 0 0 0 var(--black);
+    }
+
+    .title .name.pop {
+      animation: pop 0.4s ease;
+    }
+
+    @keyframes pop {
+      0%   { transform: scale(1) rotate(0deg); }
+      30%  { transform: scale(1.15) rotate(-8deg); }
+      60%  { transform: scale(0.95) rotate(4deg); }
+      100% { transform: scale(1) rotate(0deg); }
+    }
+
+    /* BUTTONS */
+    .btn-group {
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 14px 26px;
+      border: var(--border);
+      cursor: pointer;
+      color: var(--black);
+      background: var(--white);
+      box-shadow: var(--shadow);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .btn:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: 11px 11px 0 var(--black);
+    }
+
+    .btn:active {
+      transform: translate(4px, 4px);
+      box-shadow: 0 0 0 var(--black);
+    }
+
+    .btn-shuffle { background: #4dabf7; }
+    .btn-dark    { background: #ffa94d; }
+
+    /* COUNTER */
+    .counter {
+      margin-top: 40px;
+      font-weight: 700;
+      font-size: 1rem;
+      background: var(--white);
+      border: var(--border);
+      padding: 10px 20px;
+      display: inline-block;
+      box-shadow: 4px 4px 0 var(--black);
+    }
+
+    .counter span {
+      font-family: 'Archivo Black', sans-serif;
+      color: var(--accent);
+      font-size: 1.2rem;
+    }
+
+    /* DARK MODE NEUBRUTALISM */
+    body.dark {
+      --bg: #1a1a1a;
+      --black: #fef9c3;
+      --white: #2a2a2a;
+      --border: 3px solid #fef9c3;
+    }
+    body.dark {
+      color: #fef9c3;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      :root {
+        --shadow: 5px 5px 0 var(--black);
+      }
+      .title {
+        letter-spacing: -2px;
+      }
+      .btn {
+        width: 100%;
+      }
+      .btn-group {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <span class="tag">✨ Welcome to my test page</span>
+
+    <h1 class="title">
+      my name is <span class="name" id="name">juan</span>
+    </h1>
+
+    <div class="btn-group">
+      <button class="btn btn-shuffle" id="shuffleBtn">🎨 Shuffle Color</button>
+      <button class="btn btn-dark" id="darkBtn">🌙 Toggle Dark</button>
+    </div>
+
+    <div class="counter">
+      You clicked juan <span id="count">0</span> times
+    </div>
+  </div>
+
+  <script>
+    const nameEl   = document.getElementById('name');
+    const countEl  = document.getElementById('count');
+    const shuffleBtn = document.getElementById('shuffleBtn');
+    const darkBtn  = document.getElementById('darkBtn');
+
+    const palette = ['#ff6b9d', '#4dabf7', '#8ce99a', '#ffa94d', '#ffd43b', '#da77f2', '#ff8787', '#74c0fc'];
+    let clicks = 0;
+
+    // Klik nama "juan" → pop animation + counter
+    nameEl.addEventListener('click', () => {
+      clicks++;
+      countEl.textContent = clicks;
+      nameEl.classList.remove('pop');
+      // re-trigger animation
+      void nameEl.offsetWidth;
+      nameEl.classList.add('pop');
+    });
+
+    // Shuffle warna accent
+    shuffleBtn.addEventListener('click', () => {
+      let newColor;
+      do {
+        newColor = palette[Math.floor(Math.random() * palette.length)];
+      } while (newColor === getComputedStyle(document.documentElement).getPropertyValue('--accent').trim());
+      document.documentElement.style.setProperty('--accent', newColor);
+    });
+
+    // Toggle dark mode neubrutalism
+    darkBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      darkBtn.textContent = document.body.classList.contains('dark')
+        ? '☀️ Toggle Light'
+        : '🌙 Toggle Dark';
+    });
+  </script>
+
+</body>
+</html>
